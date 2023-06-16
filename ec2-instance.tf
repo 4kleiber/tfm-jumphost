@@ -18,6 +18,7 @@ resource "aws_instance" "this" {
   ami                    = data.aws_ami.ubuntu.id
   instance_type          = var.ec2_instance_type
   key_name = aws_key_pair.this.id
+subnet_id = var.subnet_id
   vpc_security_group_ids = concat([aws_security_group.this.id], var.additional_security_group_ids)
 
   tags = merge({
